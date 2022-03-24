@@ -60,7 +60,7 @@ MENU = '''
 def process_choice(choice):
     '''show how to process the menu.'''
     if choice=='0':
-        return 
+        return
     elif choice=='1':
         cats = category.select_all()
         print_categories(cats)
@@ -122,7 +122,7 @@ def process_choice(choice):
     #print this menu - Charlotte
     elif choice=='11':
         print(MENU)
-    
+
     else:
         print("choice",choice,"not yet implemented")
 
@@ -155,12 +155,12 @@ def print_transactions(items):
     for item in items:
         values = tuple(item.values())
         print("%-10s %-10d %-10s %-10s %-30s"%values)
-        
+
 def print_category(cat):
     ''' print the category'''
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
 
-    
+
 def print_categories(cats):
     ''' print all of the categories.'''
     print("%-3s %-10s %-30s"%("id","name","description"))
