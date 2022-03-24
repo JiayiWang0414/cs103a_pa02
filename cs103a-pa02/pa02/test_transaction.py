@@ -40,7 +40,7 @@ def test_delete(small_db):
     cats0=small_db.select_all()## original length
     # add this to the table
     cat0 = {'item_num': '0', 'amount': 2, 'category': 'test', 'date': 20220326, 'description': 'test'}
-    id0=small_db.add(cat0)
+    id0=cat0["item_num"]
     cat=small_db.select_all()##+1
     #delete this 
     small_db.delete(id0)

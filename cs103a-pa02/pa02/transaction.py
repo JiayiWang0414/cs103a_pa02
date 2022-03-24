@@ -41,7 +41,7 @@ class Transaction:
     def select_one(self, id):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("""SELECT * FROM transactions WHERE id = ?""", (id,))
+        cur.execute("""SELECT * FROM transactions WHERE item_num = ?""", (id,))
         row = cur.fetchall()
         con.close()
         #return dict(row)
@@ -61,6 +61,6 @@ class Transaction:
     def delete(self, id):
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("""DELETE FROM transactions WHERE id = ?""", (id,))
+        cur.execute("""DELETE FROM transactions WHERE item_num = ?""", (id,))
         con.commit()
         con.close()
