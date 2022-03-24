@@ -26,15 +26,16 @@ In place of SQL queries, we will have method calls.
 
 This app will store the data in a SQLite database ~/tracker.db
 
-Note the actual implementation of the ORM is hidden and so it 
+Note the actual implementation of the ORM is hidden and so it
 could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
 
 #from transactions import Transaction
+#import sys
 from category import Category
 from transaction import Transaction
-import sys
+
 
 #transactions = Transaction('tracker.db')
 category = Category('tracker.db')
@@ -42,7 +43,7 @@ transaction = Transaction('transaction.db')
 
 # here is the menu for the tracker app
 
-menu = '''
+MENU = '''
 0. quit
 1. show categories
 2. add category
@@ -56,12 +57,8 @@ menu = '''
 10. summarize transactions by category
 11. print this menu
 '''
-
-
-
-
+# show how to process the menu.
 def process_choice(choice):
-
     if choice=='0':
         return
     elif choice=='1':
@@ -79,8 +76,7 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    
-    # show transactions --Bohan
+    # show transactions--Bohan
     elif choice == '4':
         items = transaction.select_all()
         print_transactions(items)
@@ -94,7 +90,7 @@ def process_choice(choice):
         transaction.add({'item_num': item_num, 'amount': item_amount,
                         'category': item_category, 'date': item_date, 
                         'description': item_desc})
-    # delete transaction --Bohan
+    # delete transaction--Bohan
     elif choice == '6':
         row = int(input("the row of the deleted transaction: "))
         transaction.delete(row)
@@ -104,22 +100,19 @@ def process_choice(choice):
         items=transaction.select_all()
         item_date=[item for item in items if item.date[-1,-3]==date]
         return item_date
-   # summarize transactions by month --Jiayi
+   # summarize transactions by month--Jiayi
     elif choice =='8':
         month=input("transaction month: ")
         items=transaction.select_all()
         item_month=[item for item in items if item.date[4,6]==month]
-        return item_month
-        
-        
-        
+        return item_month       
    # summarize transactions by year--Jiayi
     elif choice=='9':
         year=input("transaction year: ")
         items=transaction.select_all()
         item_year=[item for item in items if item.yar[0,4]==year]
         return item_year
-    
+
     #summarize transactiosn by category - Charlotte
     elif choice=='10':
         categoryselect=input("transaction category:")
@@ -129,23 +122,17 @@ def process_choice(choice):
         
     #print this menu - Charlotte
         
-        
-        
-        
-   
 
     else:
         print("choice",choice,"not yet implemented")
 
     choice = input("> ")
-    return(choice)
-
-
+    return choice
 def toplevel():
     ''' handle the user's choice '''
 
     ''' read the command args and process them'''
-    print(menu)
+    print(MENU)
     choice = input("> ")
     while choice !='0' :
         choice = process_choice(choice)
@@ -169,10 +156,9 @@ def print_transactions(items):
         values = tuple(item.values()) 
         print("%-10s %-10d %-10s %-10s %-30s"%values)
 
-
 def print_category(cat):
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
-
+# print all of the categories.
 def print_categories(cats):
     print("%-3s %-10s %-30s"%("id","name","description"))
     print('-'*45)
@@ -181,6 +167,5 @@ def print_categories(cats):
 
 
 # here is the main call!
-
 toplevel()
 
