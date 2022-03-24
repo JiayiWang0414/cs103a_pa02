@@ -98,6 +98,36 @@ def process_choice(choice):
     elif choice == '6':
         row = int(input("the row of the deleted transaction: "))
         transaction.delete(row)
+    # summarize transactions by date --Jiayi
+    elif choice =='7':
+        date=input("transaction date: ")
+        items=transaction.select_all()
+        item_date=[item for item in items if item.date[-1,-3]==date]
+        return item_date
+   # summarize transactions by month --Jiayi
+    elif choice =='8':
+        month=input("transaction month: ")
+        items=transaction.select_all()
+        item_month=[item for item in items if item.date[4,6]==month]
+        return item_month
+        
+        
+        
+   # summarize transactions by year--Jiayi
+    elif choice=='9':
+        year=input("transaction year: ")
+        items=transaction.select_all()
+        item_year=[item for item in items if item.yar[0,4]==year]
+        return item_year
+        
+        
+        
+        
+        
+        
+        
+        
+   
 
     else:
         print("choice",choice,"not yet implemented")
