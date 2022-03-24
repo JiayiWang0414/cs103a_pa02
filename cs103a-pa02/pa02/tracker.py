@@ -57,10 +57,10 @@ MENU = '''
 10. summarize transactions by category
 11. print this menu
 '''
-# show how to process the menu.
 def process_choice(choice):
+    '''show how to process the menu.'''
     if choice=='0':
-        return
+        return 
     elif choice=='1':
         cats = category.select_all()
         print_categories(cats)
@@ -155,11 +155,14 @@ def print_transactions(items):
     for item in items:
         values = tuple(item.values()) 
         print("%-10s %-10d %-10s %-10s %-30s"%values)
-
+        
 def print_category(cat):
+    ''' print the category'''
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
-# print all of the categories.
+
+    
 def print_categories(cats):
+    ''' print all of the categories.'''
     print("%-3s %-10s %-30s"%("id","name","description"))
     print('-'*45)
     for cat in cats:
