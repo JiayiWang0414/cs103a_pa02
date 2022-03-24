@@ -10,7 +10,7 @@ class Transaction:
     # connect to the database and create the five fields: item_num, amount, category, date, description
     def __init__(self, dbfile):
         con = sqlite3.connect(dbfile)
-        cur = con.cursor
+        cur = con.cursor()
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions
                     (item_num text, amount int, category text, date text, description text)''')
         con.commit()
