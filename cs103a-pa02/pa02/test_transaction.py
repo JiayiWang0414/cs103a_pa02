@@ -32,3 +32,18 @@ def test_add(small_db):
     '''test the add method in the transaction class'''
     cat0 = {'item_num': '4', 'amount': 15, 'category': 'food', 'date': 20220320, 'description': 'testing'}
     
+    
+@pytest.mark.delete
+def test_delete(small_db):
+    '''test the delete method in the transaction class'''
+    # the initial table
+    cats0=small_db.select_all()## original length
+    # add this to the table
+    cat0 = {'item_num': '0', 'amount': 2, 'category': 'test', 'date': 20220326, 'description': 'test'}
+    id0=small_db.add(cat0)
+    cat=small_db.select_all()##+1
+    #delete this 
+    small_db.delete(id0)
+    cat00=small_db.select_all()##-1
+    assert len(cat00)==len(cats0)
+    assert len(cat00)==len(cat)-1
