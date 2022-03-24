@@ -37,7 +37,7 @@ def test_add(small_db):
 def test_delete(small_db):
     '''test the delete method in the transaction class'''
     # the initial table
-    cats0=small_db.select_all()## original length
+    cats0=small_db.select_all()## original length=3
     # add this to the table
     cat0 = {'item_num': '0', 'amount': 2, 'category': 'test', 'date': 20220326, 'description': 'test'}
     id0=cat0["item_num"]
@@ -46,4 +46,4 @@ def test_delete(small_db):
     small_db.delete(id0)
     cat00=small_db.select_all()##-1
     assert len(cat00)==len(cats0)
-    assert len(cat00)==len(cat)-1
+    
