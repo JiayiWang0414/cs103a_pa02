@@ -4,11 +4,12 @@ transaction.py will store financial transactions with the fields
 
 import sqlite3
 
+#to_trans_dict -- Charlotte
 def to_trans_dict(trans_tuple):
     ''' trans is a transaction tuple ( item_num, amount, category, date, desc)'''
     tran = {'item_num':trans_tuple[0], 'amount':trans_tuple[1], 'category':trans_tuple[2], 'date':trans_tuple[3],'desc':trans_tuple[4]}
     return tran
-
+#to_trans_dict_list -- Charlotte
 def to_trans_dict_list(trans_tuples):
     ''' convert a list of category tuples into a list of dictionaries'''
     return [to_trans_dict(tran) for tran in trans_tuples]
