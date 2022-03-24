@@ -38,7 +38,7 @@ import sys
 
 #transactions = Transaction('tracker.db')
 category = Category('tracker.db')
-transaction = Transaction('tracker.db')
+transaction = Transaction('transaction.db')
 
 # here is the menu for the tracker app
 
@@ -124,7 +124,7 @@ def process_choice(choice):
     elif choice=='10':
         categoryselect=input("transaction category:")
         items=transaction.select_all()
-        item_by_category=[item for item in items if item.name=="categoryselect"]
+        item_by_category=[item for item in items if item["category"]==categoryselect]
         return item_by_category
         
     #print this menu - Charlotte
@@ -155,18 +155,20 @@ def toplevel():
 # here are some helper functions
 #
 
+#edit print_transactions helper method, take date as text
 def print_transactions(items):
     ''' print the transactions '''
     if len(items)==0:
         print('no items to print')
         return
     print('\n')
-    print("%-10s %-10d %-10s %-10d %-30s"%(
+    print("%-10s %-10s %-10s %-10s %-30s"%(
         'item #','amount','category','date','description'))
     print('-'*40)
     for item in items:
         values = tuple(item.values()) 
-        print("%-10s %-10d %-10s %-10d %-30s"%values)
+        print("%-10s %-10d %-10s %-10s %-30s"%values)
+
 
 def print_category(cat):
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
