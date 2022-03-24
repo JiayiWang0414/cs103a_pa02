@@ -99,19 +99,19 @@ def process_choice(choice):
         date=input("transaction date: ")
         items=transaction.select_all()
         item_date=[item for item in items if item["date"]==date]
-        return item_date
+        print_transactions(item_date)
    # summarize transactions by month--Jiayi
     elif choice =='8':
         month=input("transaction month: ")
         items=transaction.select_all()
         item_month=[item for item in items if month in item["date"]]
-        return item_month       
+        print_transactions(item_month)     
    # summarize transactions by year--Jiayi
     elif choice=='9':
         year=input("transaction year: ")
         items=transaction.select_all()
         item_year=[item for item in items if year in item["date"]]
-        return item_year
+        print_transactions(item_year)
 
     #summarize transactiosn by category - Charlotte
     elif choice=='10':
