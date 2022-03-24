@@ -88,8 +88,7 @@ def process_choice(choice):
         item_date = input("transaction date: ")
         item_desc = input("transaction description: ")
         transaction.add({'item_num': item_num, 'amount': item_amount,
-                        'category': item_category, 'date': item_date, 
-                        'description': item_desc})
+                         'category': item_category,'date': item_date,'description': item_desc})
     # delete transaction--Bohan & Charlotte
     elif choice == '6':
         row = int(input("the item_num of the deleted transaction: "))
@@ -105,7 +104,7 @@ def process_choice(choice):
         month=input("transaction month: ")
         items=transaction.select_all()
         item_month=[item for item in items if month in item["date"]]
-        print_transactions(item_month)     
+        print_transactions(item_month)
    # summarize transactions by year--Jiayi
     elif choice=='9':
         year=input("transaction year: ")
@@ -119,11 +118,11 @@ def process_choice(choice):
         items=transaction.select_all()
         item_by_category=[item for item in items if item["category"]==categoryselect]
         print_transactions(item_by_category)
-        
+
     #print this menu - Charlotte
     elif choice=='11':
         print(MENU)
-        
+    
     else:
         print("choice",choice,"not yet implemented")
 
@@ -154,7 +153,7 @@ def print_transactions(items):
         'item #','amount','category','date','description'))
     print('-'*40)
     for item in items:
-        values = tuple(item.values()) 
+        values = tuple(item.values())
         print("%-10s %-10d %-10s %-10s %-30s"%values)
 
 def print_category(cat):
@@ -169,4 +168,3 @@ def print_categories(cats):
 
 # here is the main call!
 toplevel()
-
