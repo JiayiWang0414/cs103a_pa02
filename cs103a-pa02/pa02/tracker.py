@@ -76,7 +76,7 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
-    # show transactions--Bohan
+    # show transactions--Bohan & Charlotte
     elif choice == '4':
         items = transaction.select_all()
         print_transactions(items)
@@ -88,11 +88,10 @@ def process_choice(choice):
         item_date = input("transaction date: ")
         item_desc = input("transaction description: ")
         transaction.add({'item_num': item_num, 'amount': item_amount,
-                        'category': item_category, 'date': item_date, 
-                        'description': item_desc})
-    # delete transaction--Bohan
+                         'category': item_category,'date': item_date,'description': item_desc})
+    # delete transaction--Bohan & Charlotte
     elif choice == '6':
-        row = int(input("the row of the deleted transaction: "))
+        row = int(input("the item_num of the deleted transaction: "))
         transaction.delete(row)
     # summarize transactions by date --Jiayi
     elif choice =='7':
@@ -105,7 +104,7 @@ def process_choice(choice):
         month=input("transaction month: ")
         items=transaction.select_all()
         item_month=[item for item in items if month in item["date"]]
-        print_transactions(item_month)     
+        print_transactions(item_month)
    # summarize transactions by year--Jiayi
     elif choice=='9':
         year=input("transaction year: ")
@@ -118,11 +117,12 @@ def process_choice(choice):
         categoryselect=input("transaction category:")
         items=transaction.select_all()
         item_by_category=[item for item in items if item["category"]==categoryselect]
-        return item_by_category
-        
-    #print this menu - Charlotte
-        
+        print_transactions(item_by_category)
 
+    #print this menu - Charlotte
+    elif choice=='11':
+        print(MENU)
+    
     else:
         print("choice",choice,"not yet implemented")
 
@@ -142,7 +142,7 @@ def toplevel():
 # here are some helper functions
 #
 
-#edit print_transactions helper method, take date as text
+#edit print_transactions helper method, take date as text - Charlotte
 def print_transactions(items):
     ''' print the transactions '''
     if len(items)==0:
@@ -153,7 +153,7 @@ def print_transactions(items):
         'item #','amount','category','date','description'))
     print('-'*40)
     for item in items:
-        values = tuple(item.values()) 
+        values = tuple(item.values())
         print("%-10s %-10d %-10s %-10s %-30s"%values)
         
 def print_category(cat):
@@ -171,4 +171,3 @@ def print_categories(cats):
 
 # here is the main call!
 toplevel()
-
