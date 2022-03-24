@@ -39,7 +39,7 @@ from transaction import Transaction
 
 #transactions = Transaction('tracker.db')
 category = Category('tracker.db')
-transaction = Transaction('transaction.db')
+transaction = Transaction('tracker.db')
 
 # here is the menu for the tracker app
 
@@ -112,6 +112,24 @@ def process_choice(choice):
         items=transaction.select_all()
         item_year=[item for item in items if item.yar[0,4]==year]
         return item_year
+<<<<<<< HEAD
+=======
+    
+    #summarize transactiosn by category - Charlotte
+    elif choice=='10':
+        categoryselect=input("transaction category:")
+        items=transaction.select_all()
+        item_by_category=[item for item in items if item.name=="categoryselect"]
+        return item_by_category
+        
+    #print this menu - Charlotte
+        
+        
+        
+        
+   
+
+>>>>>>> f1011de1c0b72d34839b4f61b6547939279a4464
     else:
         print("choice",choice,"not yet implemented")
 
