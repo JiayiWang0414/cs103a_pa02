@@ -162,3 +162,23 @@ tracker.py:134:4: W0105: String statement has no effect (pointless-string-statem
 
 ------------------------------------------------------------------
 Your code has been rated at 9.30/10 (previous run: 9.30/10, +0.00)
+
+# Bohan Lin
+
+Script started on Thu Mar 24 22:29:43 2022
+[?1034hbash-3.2$ pylint transaction.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+bash-3.2$ pytest test_transaction.py
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.9.5, pytest-7.1.1, pluggy-1.0.0
+rootdir: /Users/mr.andy/Desktop/Brandeis/2022spring/COSI103/cs103a_pa02/cs103a-pa02/pa02, configfile: pytest.ini
+[1mcollecting ... [0m[1m
+collected 4 items                                                              [0m
+
+test_transaction.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                                 [100%][0m
+
+[32m============================== [32m[1m4 passed[0m[32m in 0.12s[0m[32m ===============================[0m
+bash-3.2$ 
